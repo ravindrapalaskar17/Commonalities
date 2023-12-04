@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This guide provides instructions on implementing linting rules for the CAMARA API using two methods: <b>Spectral Linting</b> and <b>Megalinter with Spectral Linting.</B>
+This guide provides instructions on implement linting rules for the CAMARA API using two methods: <b>Spectral Linting</b> and <b>Megalinter with Spectral Linting.</B>
 
 CAMARA suggests the second method, incorporating Megalinter with Spectral.
 

@@ -14,11 +14,9 @@ const reservedWords = [
   'configuration',
   'const',
   'continue',
-  'default',
   'do',
   'double',
   'else',
-  'enum',
   'extends',
   'file',
   'final',
@@ -76,6 +74,7 @@ const reservedWords = [
   'while'
 ];
 
+// Reserved word 'enum' and 'defualt' are removed from above reservedWords array as they are common in openapi keyword
 export default async function (input) {
   
   // Iterate over properties of the input object

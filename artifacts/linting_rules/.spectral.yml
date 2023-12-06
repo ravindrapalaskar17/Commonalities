@@ -56,6 +56,7 @@ rules:
     given: "$..*.*"
     then:
       function: camara-language-avoid-telco
+    recommended: false  # Set to true/false to enable/disable this rule
 
   check-openapi-version:
     message: "OpenAPI Version Error: The OpenAPI specification must adhere to version 3.0.3."
@@ -68,6 +69,7 @@ rules:
       function: pattern
       functionOptions:
         match: 3.0.3
+    recommended: true  # Set to true/false to enable/disable this rule
 
   camara-path-param-id:
     message: "Path Parameter Naming Warning: Use 'resource_id' instead of just 'id' in path parameters."
@@ -81,6 +83,7 @@ rules:
       function: pattern
       functionOptions:
         notMatch: \b(id|Id|ID|iD)\b
+    recommended: true  # Set to true/false to enable/disable this rule
 
   check-sensitive-data-in-paths-and-query-params:
     message: "Sensitive data found in path: {{error}} Consider avoiding the use of Sesentive data "
@@ -91,6 +94,7 @@ rules:
       - "$.paths"
     then:
       function: camara-security-no-secrets-in-path-or-query-parameters
+    recommended: true  # Set to true/false to enable/disable this rule
 
   camara-http-methods:
     description: "Ensure that all path URLs have valid HTTP methods (GET, PUT, POST, DELETE, PATCH, OPTIONS)."
@@ -101,6 +105,7 @@ rules:
       function: pattern
       functionOptions:
         match: "^(get|put|post|delete|patch|options)$"
+    recommended: true  # Set to true/false to enable/disable this rule
 
   camara-get-no-request-body:
     message: There must be no request body for Get and DELETE
@@ -111,6 +116,7 @@ rules:
     then:
       field: requestBody
       function: falsy
+    recommended: true  # Set to true/false to enable/disable this rule
 
   check-reserved-words-in-paths:
     message: "Reserved words found {{error}} Consider avoiding the use of reserved word "
@@ -127,6 +133,7 @@ rules:
       - "$.paths.*.*.operationId"              # OperationIds:
     then:
       function: camara-reserved-words
+    recommended: true  # Set to true/false to enable/disable this rule
 
   camara-parameters-descriptions:
     message: "Parameter description is missing or empty: {{error}}"
@@ -139,6 +146,7 @@ rules:
     then:
       field: description
       function: truthy
+    recommended: true  # Set to true/false to enable/disable this rule
 
   camara-operation-summary:
     message: "Operation Summary Warning: Each operation should include a short summary for better understanding."
@@ -156,6 +164,7 @@ rules:
     then:
       field: summary
       function: truthy
+    recommended: true  # Set to true/false to enable/disable this rule
 
   camara-discriminator-use:
     description: |
@@ -166,6 +175,7 @@ rules:
       field: discriminator
       function: truthy
       description: "Discriminator object is required when using oneOf or anyOf."
+    recommended: true  # Set to true/false to enable/disable this rule
 
   camara-operationid-casing-convention:
     message: Operation Id must be in Camel case "{{error}}"
@@ -177,6 +187,7 @@ rules:
       function: casing
       functionOptions:
         type: camel
+    recommended: true  # Set to true/false to enable/disable this rule
 
   camara-schema-casing-convention:
     description: This rule checks schema should follow a specific case convention pascal case.
@@ -187,6 +198,7 @@ rules:
       function: pattern
       functionOptions:
         match: "^([A-Z][a-z0-9]*([A-Z][a-z0-9]*)*)$"
+    recommended: true  # Set to true/false to enable/disable this rule
 
   camara-parameter-casing-convention:
     description: Paths should be kebab-case.
@@ -197,3 +209,4 @@ rules:
       function: pattern
       functionOptions:
         match: "^\/([a-z0-9]+(-[a-z0-9]+)*)?(\/[a-z0-9]+(-[a-z0-9]+)*|\/{.+})*$"  # doesn't allow /asasd{asdas}sadas pattern or not closed braces
+    recommended: true  # Set to true/false to enable/disable this rule

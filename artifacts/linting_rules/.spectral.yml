@@ -118,7 +118,7 @@ rules:
       function: falsy
     recommended: true  # Set to true/false to enable/disable this rule
 
-  check-reserved-words-in-paths:
+  camara-reserved-words:
     message: "Reserved words found {{error}} Consider avoiding the use of reserved word "
     severity: warn
     description: |

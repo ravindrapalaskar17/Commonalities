@@ -58,7 +58,7 @@ rules:
       function: camara-language-avoid-telco
     recommended: false  # Set to true/false to enable/disable this rule
 
-  check-openapi-version:
+  camara-oas-version:
     message: "OpenAPI Version Error: The OpenAPI specification must adhere to version 3.0.3."
     severity: error
     description: |
@@ -85,7 +85,7 @@ rules:
         notMatch: \b(id|Id|ID|iD)\b
     recommended: true  # Set to true/false to enable/disable this rule
 
-  check-sensitive-data-in-paths-and-query-params:
+  camara-security-no-secrets-in-path-or-query-parameters:
     message: "Sensitive data found in path: {{error}} Consider avoiding the use of Sesentive data "
     severity: warn
     description: |

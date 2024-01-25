@@ -1,6 +1,9 @@
 ---
 # MegaLinter GitHub Action configuration file
 # More info at https://megalinter.io
+# CAMARA Project - Github Action for Pull Reqests
+# 31.01.2024 - initial version
+
 name: MegaLinter
 
 on: # yamllint disable-line rule:truthy

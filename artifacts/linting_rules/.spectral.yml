@@ -138,12 +138,54 @@ rules:
     then:
       function: camara-reserved-words
     recommended: true  # Set to true/false to enable/disable this rule
-
+    
+   camara-routes-description:
+    message: "Functionality method description Warning: Each method should have description."
+    severity: warn
+    description: |
+            This rule checks if each operation (POST, GET, DELETE, PUT, PATCH, OPTIONS) in your API specification has a description.
+            Ensure that you have added a 'summary' field for each operation in your OpenAPI specification.
+    given:
+      - "$.paths.*.post"
+      - "$.paths.*.get"
+      - "$.paths.*.delete"
+      - "$.paths.*.put"
+      - "$.paths.*.patch"
+      - "$.paths.*.options"
+    then:
+      field: description
+      function: truthy
+    recommended: true  # Set to true/false to enable/disable this rule
+    
   camara-parameters-descriptions:
     message: "Parameter description is missing or empty: {{error}}"
     severity: warn
     description: |
-      This Spectral rule ensures that each parameter in the API specification, including components and properties, has a descriptive and meaningful description.
+      This Spectral rule ensures that each path parameter in the API specification has a descriptive and meaningful description.
+    given:
+      - "$.paths..parameters.*"
+    then:
+      field: description
+      function: truthy
+    recommended: true  # Set to true/false to enable/disable this rule
+    
+  camara-response-descriptions:
+    message: "Parameter description is missing or empty: {{error}}"
+    severity: warn
+    description: |
+      This Spectral rule ensures that each responese object in the API specification has a descriptive and meaningful description.
+    given:
+      - "$.paths..responses.*"
+    then:
+      field: description
+      function: truthy
+    recommended: true  # Set to true/false to enable/disable this rule
+
+  camara-propereties-descriptions:
+    message: "Property description is missing or empty: {{error}}"
+    severity: warn
+    description: |
+      This Spectral rule ensures that each propoerty within objects in the API specification has a descriptive and meaningful description.
     given:
       - "$.components.*.*"
       - "$.components.*.*.properties.*"
@@ -151,7 +193,7 @@ rules:
       field: description
       function: truthy
     recommended: true  # Set to true/false to enable/disable this rule
-
+    
   camara-operation-summary:
     message: "Operation Summary Warning: Each operation should include a short summary for better understanding."
     severity: warn
@@ -205,12 +247,12 @@ rules:
     recommended: true  # Set to true/false to enable/disable this rule
 
   camara-parameter-casing-convention:
-    description: This rule checks Paths should follow a specific case convention kebab-case.
+    description: Paths should be kebab-case.
     severity: error
-    message: "{{property}} should be kebab-case: {{error}}"
+    message: "{{property}} is not kebab-case: {{error}}"
     given: $.paths[*]~
     then:
-      function: casing
+      function: pattern
       functionOptions:
-        type: kebab
+        match: "^\/([a-z0-9]+(-[a-z0-9]+)*)?(\/[a-z0-9]+(-[a-z0-9]+)*|\/{.+})*$"  # doesn't allow /asasd{asdas}sadas pattern or not closed braces
     recommended: true  # Set to true/false to enable/disable this rule

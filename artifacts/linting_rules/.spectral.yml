@@ -181,7 +181,7 @@ rules:
       function: truthy
     recommended: true  # Set to true/false to enable/disable this rule
 
-  camara-propereties-descriptions:
+  camara-properties-descriptions:
     message: "Property description is missing or empty: {{error}}"
     severity: warn
     description: |

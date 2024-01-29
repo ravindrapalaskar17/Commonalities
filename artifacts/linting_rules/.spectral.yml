@@ -215,7 +215,7 @@ rules:
   camara-discriminator-use:
     description: |
       Ensure that API definition YAML files with oneOf or anyOf sections include a discriminator object for serialization, deserialization, and validation.
-    severity: warn
+    severity: hint
     given: "$..[?(@.oneOf || @.anyOf)]"
     then:
       field: discriminator

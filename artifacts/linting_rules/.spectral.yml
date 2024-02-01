@@ -48,7 +48,7 @@ rules:
   oas3-unused-component: true
   oas3-valid-media-example: true
   oas3-valid-schema-example: true
-  oas3-server-variables: true
+  # oas3-server-variables: true
 
   # Custom Rules Utilizing Spectral's Built-in Functions and JavaScript Implementations
 

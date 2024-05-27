@@ -1,4 +1,4 @@
-# CAMARA OpenAPI Linting Rules Implementaion Guideline [ How to integrate the rules into CAMARA repository ]
+# CAMARA Test Linting Rules Implementaion Guideline [ How to integrate the rules into CAMARA repository ]
 
 ## Introduction
 
@@ -8,9 +8,9 @@ All needed files are stored in [artifacts subfolder](https://github.com/camarapr
 The target method is linting rules integration with CAMARA API subproject repositories using GitHub Actions.
 
 
-## Spectral Configuration
+## Gherkin Linting  Configuration
 
-The Spectral configuration consists of <b><a href="https://github.com/camaraproject/Commonalities/blob/main/artifacts/linting_rules/.spectral.yml"> .spectral.yml</a></b> file, which contains all the rules defined for CAMARA OpenAPI specification as described in [Linting-rules.md](Linting-rules.md)
+The Gherkin Linting configuration consists of <b><a href="https://github.com/camaraproject/Commonalities/blob/main/artifacts/linting_rules/.gherkin-lintrc"> .gherkin-lintrc</a></b> file, which contains all the rules defined for CAMARA OpenAPI specification as described in [Linting-rules.md](Linting-rules.md)
 
 This file consolidates all rules:
 
@@ -60,22 +60,18 @@ Additionally, Megalinter also supports linting of YAML files. To enable this, us
 
 
 
-## API Linting configuration steps for local deployment
+## Gherkin Linting configuration steps for local deployment
 
-1.  Install Spectral locally:
+1.  Install Gherkin locally:
 
         npm install -g @stoplight/spectral
 
-2.  Install Spectral functions locally:
+2.  Save files locally:
 
-        npm install --save @stoplight/spectral-functions
+    Save ".gherkin-lintrc" file (contains Linting rules) at the root location.
 
-3.  Save files locally:
+4.  Apply Gherkin Lint rules on Test feature file  specification loacally:
 
-    Save ".spectral.yml" file (contains Linting rules) and lint_function folder (contains JavaScript customized functions) at the root location.
+        gherkin-lint test.feature  
 
-4.  Apply spectral rules on API specification loacally:
-
-        spectral lint openapi.yaml --verbose --ruleset .spectral.yml
-
-    *Replace **'openapi.yaml'** with the path to your OpenAPI specification file.*
+    *Replace **'test.feature'** with the path to your test feature file.*

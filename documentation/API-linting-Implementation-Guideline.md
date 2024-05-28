@@ -79,3 +79,23 @@ Additionally, Megalinter also supports linting of YAML files. To enable this, us
         spectral lint openapi.yaml --verbose --ruleset .spectral.yml
 
     *Replace **'openapi.yaml'** with the path to your OpenAPI specification file.*
+
+## Gherkin Integration for Test Contribution Feature Files
+
+To integrate Gherkin linting into the Megalinter setup, follow these steps:
+
+1. Install Gherkin Linter:
+
+Add the following steps to your megalinter.yml file:
+
+    - name: Install Gherkin Linter
+      run: npm install -g gherkin-lint
+
+    - name: Run Gherkin Linting
+      run: gherkin-lint code/Test_definitions/QoD_API_Test.feature
+
+2. Add Gherkin Linting Configuration:
+
+   Create a .gherkin-lintrc file at the root location of your repository with the desired linting rules.
+   
+

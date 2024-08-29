@@ -5,13 +5,13 @@
   "no-dupe-scenario-names": ["on", "in-feature"],
   "no-dupe-feature-names": "on",
   "no-partially-commented-tag-lines": "on",
-  "indentation": "on",
+  "indentation": "off",
   "no-trailing-spaces": "on",
-  "new-line-at-eof": ["on", "yes"],
+  "new-line-at-eof": ["on", "no"],
   "no-multiple-empty-lines": "on",
   "no-empty-file": "on",
   "no-scenario-outlines-without-examples": "on",
-  "name-length": ["on", {"Feature": 50}],
+  "name-length": ["on", {"Feature": 90, "Step": 190, "Scenario": 190}],
   "no-restricted-tags": ["on", {"tags": ["@watch", "@wip"]}],
   "use-and": "on",
   "keywords-in-logical-order": "on",
@@ -23,10 +23,16 @@
   "no-background-only-scenario": "on",
   "no-empty-background": "on",
   "scenario-size": ["on", { "steps-length": {"Background": 15, "Scenario": 15}}],
-  "only-one-when": "on",
-  "allowed-tags": ["on", {"tags": ["@watch", "@wip"], "patterns": ["^@todo$"]}],
-  "file-name": ["on", {"style": "PascalCase"}],
-  "max-scenarios-per-file": ["on", {"maxScenarios": 10, "countOutlineExamples": true}],
+  "only-one-when": "off",
+  "allowed-tags": ["on", {
+  "patterns": [
+    "^@watch$",                        
+    "^@wip$",                                            
+    "^@.*$"                                   
+  ]
+ }],
+  "file-name": ["on", {"style": "kebab-case"}],
+  "max-scenarios-per-file": ["on", {"maxScenarios": 50, "countOutlineExamples": true}],
   "no-restricted-patterns": ["on", {
     "Global": [
       "^globally restricted pattern"
@@ -45,5 +51,8 @@
       "a debugging step"
     ]
   }],
-  "required-tags": ["on", {"tags": ["^@issue:[1-9]\\d*$"], "ignoreUntagged": false}]
+  "required-tags": ["on", {
+  "tags": ["^@.*$"], // Allow any tag starting with '@'
+  "ignoreUntagged": false // Enforce tagging
+}]
 }

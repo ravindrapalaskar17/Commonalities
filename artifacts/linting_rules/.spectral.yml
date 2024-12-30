@@ -6,7 +6,6 @@
 # - 30.12.2024: Updated info-contact rule
 
 
-
 extends: "spectral:oas"
 functions:
   - camara-reserved-words
